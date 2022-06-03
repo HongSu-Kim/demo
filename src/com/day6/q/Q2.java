@@ -1,4 +1,4 @@
-package com.day5.q;
+package com.day6.q;
 
 import java.io.IOException;
 import java.util.Random;

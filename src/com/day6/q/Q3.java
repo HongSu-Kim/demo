@@ -1,4 +1,4 @@
-package com.day5.q;
+package com.day6.q;
 
 import java.util.Random;
 import java.util.Scanner;
