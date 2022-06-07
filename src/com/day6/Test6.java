@@ -34,16 +34,16 @@ public class Test6 {
 		}
 
 		System.out.println("\n\n");
-		
+
 		int[][] a = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } }; // 선언 + 초기화
 		int[][] b = { { 9, 8, 7 }, { 6, 5, 4 }, { 3, 2, 1 } };
 		int[][] sum = new int[3][3];
 
 		for (i = 0; i < a.length; i++) {
 			for (j = 0; j < b.length; j++) {
-				
+
 				sum[i][j] = a[i][j] * b[i][j];
-				
+
 				System.out.printf("%4d", sum[i][j]);
 
 			}

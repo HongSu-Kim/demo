@@ -14,7 +14,6 @@ public class Test5 {
 //		System.out.println(str.substring(6, 8)); // ko : 6 ~ 8-1
 //		System.out.println(str.substring(6)); // korea : 6 ~
 
-		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 
 		// index : 01234567890123
@@ -35,6 +34,7 @@ public class Test5 {
 
 		if (jumin.length() != 14) {
 			System.out.println("입력 오류!!");
+			sc.close();
 			return; // stop
 		}
 
@@ -57,6 +57,8 @@ public class Test5 {
 		} else {
 			System.out.println("넌 누구냐?");
 		}
+
+		sc.close();
 
 	}
 

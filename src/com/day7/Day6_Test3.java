@@ -1,19 +1,17 @@
-package com.day6;
+package com.day7;
 
 import java.util.Scanner;
 
-public class Test3 {
+class D6T3 {
 
-	public static void main(String[] args) {
+	int[] score, rank;
+	String[] name;
+	int i, j, inwon;
 
-		// 10명 이내의 이름과 점수를 입력받아
-		// 석차 구하기
+	public void input() {
 
-		int[] score, rank;
-		String[] name;
-		Scanner sc = new Scanner(System.in); // new : 객체생성
-		int i, j, inwon;
-
+		@SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
 		do {
 			System.out.print("인원수[1 ~ 10]? ");
 			inwon = sc.nextInt();
@@ -32,7 +30,10 @@ public class Test3 {
 			rank[i] = 1; // 석차 초기화
 		}
 
-		// 석차계산
+	}
+
+	public void rank() {
+
 		for (i = 0; i < inwon - 1; i++) {
 
 			for (j = i + 1; j < inwon; j++) {
@@ -48,11 +49,26 @@ public class Test3 {
 
 		}
 
+	}
+
+	public void print() {
+
 		for (i = 0; i < inwon; i++) {
 			System.out.printf("%6s %4d점 %4d등\n", name[i], score[i], rank[i]);
 		}
 
-		sc.close();
+	}
+
+}
+
+public class Day6_Test3 {
+
+	public static void main(String[] args) {
+
+		D6T3 o = new D6T3();
+		o.input();
+		o.rank();
+		o.print();
 
 	}
 

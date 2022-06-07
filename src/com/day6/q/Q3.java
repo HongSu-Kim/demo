@@ -15,7 +15,7 @@ public class Q3 {
 		System.out.print("1.가위, 2.바위, 3.보 ? ");
 		n[0] = rd.nextInt(3) + 1;
 		n[1] = sc.nextInt();
-		
+
 		for (int i = 0; i < 2; i++) {
 			switch (n[i]) {
 			case 1:

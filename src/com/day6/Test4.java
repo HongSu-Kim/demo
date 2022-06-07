@@ -15,7 +15,10 @@ public class Test4 {
 		}
 		System.out.println();
 
+		// Select Sort
+		// 01 02 03 04 12 13 14 23 24 34
 		// Bubble Sort
+		// 01 12 23 34 01 12 23 01 12 01
 		for (i = 1; i < num.length; i++) {
 			for (j = 0; j < num.length - i; j++) {
 				if (num[j] > num[j + 1]) {

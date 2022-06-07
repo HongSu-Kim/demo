@@ -11,13 +11,13 @@ public class Test2 {
 		Random rd = new Random();
 
 		int[] num = new int[6];
-		int i, j ,n = 0;
+		int i, j, n = 0;
 
 		while (n < 6) {
 
 			num[n] = rd.nextInt(45) + 1;
 
-			for ( i = 0; i < n; i++) {
+			for (i = 0; i < n; i++) {
 				if (num[i] == num[n]) {
 					n--;
 					break;
@@ -27,6 +27,20 @@ public class Test2 {
 			n++;
 
 		}
+
+//		for (n = 0; n < num.length; n++) {
+//			
+//			num[n] = rd.nextInt(45) + 1;
+//			
+//			for (i = 0; i < n; i++) {
+//				if (num[i] == num[n]) {
+//					n--;
+//					break;
+//				}
+//				
+//			} 
+//			
+//		}
 
 		for (i = 0; i < num.length - 1; i++) {
 
