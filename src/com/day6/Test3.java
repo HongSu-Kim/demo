@@ -19,7 +19,7 @@ public class Test3 {
 			inwon = sc.nextInt();
 		} while (inwon < 1 || inwon > 10);
 
-		// 배열의 메모리 할당 (배열 객체생성)85
+		// 배열의 메모리 할당 (배열 객체생성)
 		name = new String[inwon]; // 기본값 : null
 		score = new int[inwon];
 		rank = new int[inwon]; // 기본값 : 0

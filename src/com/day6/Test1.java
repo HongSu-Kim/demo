@@ -20,7 +20,7 @@ public class Test1 {
 			inwon = sc.nextInt();
 		} while (inwon < 1 || inwon > 10);
 
-		// 배열의 메모리 할당 (배열 객체생성)85
+		// 배열의 메모리 할당 (배열 객체생성)
 		name = new String[inwon];
 		scare = new int[inwon];
 

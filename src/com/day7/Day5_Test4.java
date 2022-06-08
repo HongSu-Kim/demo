@@ -59,11 +59,11 @@ public class Day5_Test4 {
 
 	public static void main(String[] args) {
 
-		D5T4 o = new D5T4();
-		o.input();
-		o.printSourceData();
-		o.selectionSort();
-		o.printSortedData();
+		D5T4 ob = new D5T4();
+		ob.input();
+		ob.printSourceData();
+		ob.selectionSort();
+		ob.printSortedData();
 
 	}
 

@@ -29,7 +29,7 @@ public class Test6 {
 
 		System.out.println(name + " : " + (kor + eng + mat) + "점");
 
-		sc.close();
+		sc.close(); // 쓰는게 정석이지만 안써줘도 오류가 나지는 않는다.
 
 	}
 

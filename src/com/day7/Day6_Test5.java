@@ -64,11 +64,11 @@ public class Day6_Test5 {
 
 	public static void main(String[] args) {
 
-		D6T5 o = new D6T5();
-		o.input();
-		int tot = o.tot();
-		int su = o.su(tot);
-		o.print(su);
+		D6T5 ob = new D6T5();
+		ob.input();
+		int tot = ob.tot();
+		int su = ob.su(tot);
+		ob.print(su);
 
 	}
 

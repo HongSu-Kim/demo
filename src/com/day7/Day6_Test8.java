@@ -16,13 +16,19 @@ class D6T8 {
 
 	}
 
-	public int inputUser() throws IOException {
+	public int inputUser() {
 
 		do {
+
 			System.out.print("1:가위, 2:바위, 3:보 ?");
-			char ch = (char) System.in.read();
-			System.in.skip(2);
-			user = ch - 49;
+//			char ch = (char) System.in.read();
+//			System.in.skip(2);
+//			user = ch - 49;
+			try {
+				user = Integer.parseInt(sc.nextLine()) - 1;
+			} catch (NumberFormatException e) {
+				user = -1;
+			}
 
 		} while (user < 0 || user > 2);
 
@@ -73,14 +79,14 @@ public class Day6_Test8 {
 
 	public static void main(String[] args) throws IOException {
 
-		D6T8 o = new D6T8();
+		D6T8 ob = new D6T8();
 
 		do {
-			int com = o.com();
-			int user = o.inputUser();
-			String result = o.result(com, user);
-			o.print(com, user, result);
-		} while (o.reGame() == 1);
+			int com = ob.com();
+			int user = ob.inputUser();
+			String result = ob.result(com, user);
+			ob.print(com, user, result);
+		} while (ob.reGame() == 1);
 
 	}
 

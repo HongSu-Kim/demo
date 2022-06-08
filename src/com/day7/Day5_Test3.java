@@ -75,13 +75,13 @@ public class Day5_Test3 {
 
 	public static void main(String[] args) {
 
-		D5T3 o = new D5T3();
-		int y = o.inputYear();
-		int m = o.inputMonth(y);
-		int d = o.inputDay(m);
-		int nalsu = o.nalsu(y, m, d);
-		char yoil = o.yoil(nalsu);
-		o.print(y, m, d, yoil);
+		D5T3 ob = new D5T3();
+		int y = ob.inputYear();
+		int m = ob.inputMonth(y);
+		int d = ob.inputDay(m);
+		int nalsu = ob.nalsu(y, m, d);
+		char yoil = ob.yoil(nalsu);
+		ob.print(y, m, d, yoil);
 
 	}
 

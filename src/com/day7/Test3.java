@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 class Hap {
 
-	int su, sum;
+	int su;
 
 	public void input() {
 
@@ -18,6 +18,7 @@ class Hap {
 
 	public int cnt() {
 
+		int sum = 0;
 		for (int i = 1; i <= su; i++) {
 			sum += i;
 		}

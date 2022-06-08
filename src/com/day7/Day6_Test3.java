@@ -65,10 +65,10 @@ public class Day6_Test3 {
 
 	public static void main(String[] args) {
 
-		D6T3 o = new D6T3();
-		o.input();
-		o.rank();
-		o.print();
+		D6T3 ob = new D6T3();
+		ob.input();
+		ob.rank();
+		ob.print();
 
 	}
 
