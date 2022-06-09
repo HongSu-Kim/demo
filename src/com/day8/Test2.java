@@ -26,6 +26,7 @@ public class Test2 {
 		// 호출할수없다.
 	}
 
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 
 		// a, print(), main() : 메모리에 올라가있음

@@ -1,4 +1,4 @@
-package com.score1;
+package com.score2;
 
 public class ScoreMain {
 
@@ -9,10 +9,7 @@ public class ScoreMain {
 		ob.set();
 		ob.input();
 		ob.print();
-		System.out.println(ob);
-		System.out.println(ob.rec);
-		System.out.println(ob.rec[0]);
-		System.out.println(ob.rec[1]);
+
 	}
 
 }

@@ -11,6 +11,7 @@ public class Test3 {
 
 		MyData.getInstance();
 
+		@SuppressWarnings("unused")
 		Calendar cal = Calendar.getInstance();
 
 	}

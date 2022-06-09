@@ -7,7 +7,7 @@ public class BMI {
 
 	int inwon, mi;
 	Scanner sc = new Scanner(System.in);
-	Record[] rec;
+	Profile[] pro;
 
 	public void set() {
 
@@ -18,7 +18,7 @@ public class BMI {
 //
 //		rec = new Record[inwon];
 		
-		rec = new Record[10];
+		pro = new Profile[10];
 		
 	}
 
@@ -42,19 +42,19 @@ public class BMI {
 	public void input() throws IOException {
 
 		do {
-			for (int i = 0; i < rec.length; i++) {
+			for (int i = 0; i < pro.length; i++) {
 
-				if (rec[i] == null) {
+				if (pro[i] == null) {
 
-					rec[i] = new Record();
+					pro[i] = new Profile();
 
 					System.out.print("이름? ");
-					rec[i].name = sc.next();
+					pro[i].name = sc.next();
 					System.out.print("몸무게? ");
-					rec[i].weight = sc.nextDouble();
+					pro[i].weight = sc.nextDouble();
 					System.out.print("키? ");
-					rec[i].height = sc.nextDouble();
-					rec[i].ID = Record.getSerialNum();
+					pro[i].height = sc.nextDouble();
+					pro[i].ID = Profile.getSerialNum();
 
 					break;
 				}
@@ -67,36 +67,36 @@ public class BMI {
 
 	private void bmi(int i) {
 
-		if (rec[i].height > 3) { // cm를 m로 변환
-			rec[i].height /= 100;
+		if (pro[i].height > 3) { // cm를 m로 변환
+			pro[i].height /= 100;
 		}
 
-		rec[i].bmi = rec[i].weight / (rec[i].height * rec[i].height);
+		pro[i].bmi = pro[i].weight / (pro[i].height * pro[i].height);
 
-		if (rec[i].bmi < 18.5)
-			rec[i].result = "저체중";
-		else if (rec[i].bmi < 23.0)
-			rec[i].result = "정상";
-		else if (rec[i].bmi < 25)
-			rec[i].result = "과체중";
+		if (pro[i].bmi < 18.5)
+			pro[i].result = "저체중";
+		else if (pro[i].bmi < 23.0)
+			pro[i].result = "정상";
+		else if (pro[i].bmi < 25)
+			pro[i].result = "과체중";
 		else
-			rec[i].result = "비만";
+			pro[i].result = "비만";
 
-		rec[i].height *= 100;
+		pro[i].height *= 100;
 
 	}
 
 	public void print() {
 
-		for (int i = 0; i < rec.length; i++) {
+		for (int i = 0; i < pro.length; i++) {
 
 			bmi(i);
 			System.out.println();
-			System.out.printf("회원번호 : %2d, 이름 : %6s\n", rec[i].ID, rec[i].name);
-			System.out.printf("몸무게 : %.2fkg, 키 : %.2fcm\n", rec[i].weight, rec[i].height);
-			System.out.printf("BMI(신체질량지수)는 %.2f이고, %s입니다.\n", rec[i].bmi, rec[i].result);
+			System.out.printf("회원번호 : %2d, 이름 : %6s\n", pro[i].ID, pro[i].name);
+			System.out.printf("몸무게 : %.2fkg, 키 : %.2fcm\n", pro[i].weight, pro[i].height);
+			System.out.printf("BMI(신체질량지수)는 %.2f이고, %s입니다.\n", pro[i].bmi, pro[i].result);
 
-			if (rec[i + 1] == null)
+			if (pro[i + 1] == null)
 				break;
 
 		}
