@@ -8,7 +8,7 @@ public class Score {
 	// int[] inwon; // n개의 int 값을 저장할수있는 자료형
 	// Record rec; // Record : 7개의 값(String 1개, int[3] 1개, int 3개)을 저장할수있는 자료형
 	Record[] rec; // n개의 Record 값을 저장할수있는 자료형
-	String[] title = { "국어", "영어", "수학"};
+	String[] title = { "국어", "영어", "수학" };
 
 	Scanner sc = new Scanner(System.in);
 
@@ -69,6 +69,33 @@ public class Score {
 
 	}
 
+	private String panjung(int jumsu) {
+
+		String pan;
+
+		switch (jumsu / 10) {
+		case 10:
+		case 9:
+			pan = "수";
+			break;
+		case 8:
+			pan = "우";
+			break;
+		case 7:
+			pan = "미";
+			break;
+		case 6:
+			pan = "양";
+			break;
+		default:
+			pan = "가";
+			break;
+		}
+		
+		return pan;
+
+	}
+
 	public void print() {
 
 		ranking(); // 메소드에서 메소드 호출가능
@@ -77,7 +104,7 @@ public class Score {
 
 			System.out.printf("이름 : %6s\n", rec[i].name);
 			for (int j = 0; j < title.length; j++) {
-				System.out.printf("%s : %3d, ", title[j], rec[i].score[j]);
+				System.out.printf("%s : %3d(%s), ", title[j], rec[i].score[j], panjung(rec[i].score[j]));
 			}
 			System.out.println();
 			System.out.printf("총점 : %3d, 평균 : %3d, 등수 : %2d등", rec[i].tot, rec[i].ave, rec[i].rank);

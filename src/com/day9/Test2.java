@@ -1,8 +1,8 @@
 package com.day9;
 
 // 생성자 
-// 1. 메모리 할당
-// 2. 변수 초기화
+// 1. 메모리 할당 (객체 생성)
+// 2. 변수 초기화 (클래스 초기화 : 의존성주입)
 // 클래스의 이름과 동일
 // 반환값(return)이 없기 때문에 property(void, int, String등)가 없다
 // 중복정의가 가능(오버로딩)
@@ -35,7 +35,7 @@ public class Test2 {
 
 	}
 
-	public void setData(int x) {
+	public void setData(int x) { // private 변수를 초기화
 		this.x = x;
 	}
 
