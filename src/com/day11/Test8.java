@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class ans {
+class Sum {
 
 	protected int num1, num2, result;
 	protected String oper;
@@ -17,7 +17,7 @@ class ans {
 
 }
 
-class clac extends ans {
+class Clac extends Sum {
 
 	String str;
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -41,7 +41,7 @@ class clac extends ans {
 	}
 
 	public void cal() {
-		
+
 		switch (oper) {
 		case "+":
 			result = num1 + num2;
@@ -60,14 +60,14 @@ class clac extends ans {
 		}
 
 	}
-	
+
 }
 
 public class Test8 {
 
 	public static void main(String[] args) throws IOException {
 
-		clac cl = new clac();
+		Clac cl = new Clac();
 		cl.input();
 		cl.cal();
 		cl.write();

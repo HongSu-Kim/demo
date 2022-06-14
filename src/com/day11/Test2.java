@@ -1,9 +1,9 @@
 package com.day11;
 
 // String : 자료형이 아니고 class이다.
+
 // 저장할 데이터는 크고(스택영역이 아닌 힙영역에 저장한다) 사용빈도는 높기때문에
 // String은 불변의 법칙을 가지고있다.(한번 만들어지면 값을 변경하지않는다, 값을 변경하면 클래스를 새로 만든다.)
-
 
 public class Test2 {
 
@@ -25,17 +25,13 @@ public class Test2 {
 
 		ob2 = "China";
 		System.out.println("ob1 == ob2 : " + (ob1 == ob2)); // false
-		
+
 		ob2 = "Seoul";
 		System.out.println("ob1 == ob2 : " + (ob1 == ob2)); // true
 
 		System.out.println(ob2);
 		System.out.println(ob2.toString()); // Object의 toString을 오버라이딩함
-		
-		
-		
-		
-		
+
 	}
 
 }
