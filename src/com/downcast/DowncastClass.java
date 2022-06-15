@@ -18,18 +18,18 @@ class Super {
 	}
 }
 
-class Sup extends Super {
+class Sub extends Super {
 
 	protected int x = 30;
 	protected int c = 40;
 
 	@Override
 	public void printOverride() {
-		System.out.println("Sup printOverride()");
+		System.out.println("Sub printOverride()");
 	}
 
-	public void printSup() {
-		System.out.println("printSup()");
+	public void printSub() {
+		System.out.println("printSub()");
 	}
 
 	@Override

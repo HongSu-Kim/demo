@@ -20,23 +20,37 @@ public class Test3 {
 		int y, m, d, w, n;
 		String[] week = { "일", "월", "화", "수", "목", "금", "토" };
 
-		System.out.print("년도? ");
-		y = sc.nextInt();
-		System.out.print("월? ");
-		m = sc.nextInt();
-		System.out.print("일? ");
-		d = sc.nextInt();
-		System.out.print("며칠후? ");
-		n = sc.nextInt();
+		do {
+			System.out.print("년도? ");
+			y = sc.nextInt();
+		} while (y < 1);
+		do {
+			System.out.print("월? ");
+			m = sc.nextInt();
+		} while (m < 1 || m > 12);
+		do {
+			System.out.print("일? ");
+			d = sc.nextInt();
+		} while (d < 1 || d > cal.getActualMaximum(Calendar.DATE));
+		do {
+			System.out.print("며칠후? ");
+			n = sc.nextInt();
+		} while (n < 1);
 		sc.close();
 
 		cal.set(y, m - 1, d);
+		y = cal.get(Calendar.YEAR);
+		m = cal.get(Calendar.MARCH) + 1;
+		d = cal.get(Calendar.DATE);
+		w = cal.get(Calendar.DAY_OF_WEEK) - 1;
+		System.out.printf("만난날 : %d년 %d월 %d일 %s요일\n", y, m, d, week[w]);
+		
 		cal.add(Calendar.DATE, n);
 		y = cal.get(Calendar.YEAR);
 		m = cal.get(Calendar.MARCH) + 1;
 		d = cal.get(Calendar.DATE);
 		w = cal.get(Calendar.DAY_OF_WEEK) - 1;
-		System.out.printf("%d-%d-%d %s요일", y, m, d, week[w]);
+		System.out.printf("%d일후 : %d년 %d월 %d일 %s요일", n, y, m, d, week[w]);
 
 	}
 

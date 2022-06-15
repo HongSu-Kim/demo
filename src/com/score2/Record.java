@@ -2,9 +2,8 @@ package com.score2;
 
 public class Record {
 
-	String name;
-	int[] score = new int[3]; // kor, eng, mat
-	char[] ch = new char[3];
+	String hak, name;
+	int kor, eng, mat;
 	int tot, ave;
 
 }
