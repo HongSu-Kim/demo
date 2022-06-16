@@ -4,6 +4,7 @@ public class DowncastTest {
 
 	public static void main(String[] args) {
 
+		// class
 		System.out.println("class : ob1");
 		Super ob1 = new Super();
 		System.out.println("class name : " + ob1.getClass().getSimpleName()); // class name
