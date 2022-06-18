@@ -67,7 +67,7 @@ public class ScoreImpl implements Score {
 			ScoreVO vo = it.next();
 
 			if (hak.equals(vo.getHak())) { // hak(입력한 hak)과 vo.getHak()(lists에 저장된 hak을 순서대로 불러옴)이 같을때
-				it.remove(); // lists에 저장된 ScoreVO를 삭제
+				lists.remove(vo); // lists에 저장된 ScoreVO를 삭제
 				System.out.println("삭제되었습니다.");
 				return; // 메소드 종료
 			}
@@ -124,7 +124,6 @@ public class ScoreImpl implements Score {
 	public void descSortTot() { // 내림차순정렬
 
 		Comparator<ScoreVO> comp = new Comparator<ScoreVO>() { // comp를 정의// anonymousClass
-
 			@Override
 			public int compare(ScoreVO vo1, ScoreVO vo2) {
 				return vo1.getTot() < vo2.getTot() ? 1 : -1;
@@ -132,7 +131,6 @@ public class ScoreImpl implements Score {
 		};
 
 		Collections.sort(lists, comp); // 정렬조건 : comp
-
 		print();
 
 	}
@@ -141,21 +139,9 @@ public class ScoreImpl implements Score {
 	public void ascSortHak() {
 
 		Comparator<ScoreVO> comp = new Comparator<ScoreVO>() { // anonymousClass
-
 			@Override
 			public int compare(ScoreVO vo1, ScoreVO vo2) {
-				boolean result = false;
-				for (int i = 0; i < vo1.getHak().length(); i++) {
-					if (vo1.getHak().charAt(i) > vo2.getHak().charAt(i)) {
-						result = true;
-						break;
-					} else if (vo1.getHak().charAt(i) < vo2.getHak().charAt(i)) {
-						result = false;
-						break;
-					}
-				}
-
-				return result ? 1 : -1;
+				return vo1.getHak().compareTo(vo2.getHak()) > 0 ? 1 : -1;
 			}
 		};
 
