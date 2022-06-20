@@ -28,6 +28,7 @@ public class Test3 {
 			System.out.print("¿ù? ");
 			m = sc.nextInt();
 		} while (m < 1 || m > 12);
+		cal.set(y, m-1, Calendar.DATE);
 		do {
 			System.out.print("ÀÏ? ");
 			d = sc.nextInt();

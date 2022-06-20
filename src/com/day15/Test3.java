@@ -13,7 +13,7 @@ public class Test3 {
 
 	public static void main(String[] args) {
 
-		// Set : 중복값 허용 안함
+		// Set : (value)중복값 허용 안함
 		Set<String> s = new HashSet<>();
 
 		s.add("서울");
@@ -52,7 +52,7 @@ public class Test3 {
 		q.add("울산"); // add()도 사용 가능
 
 		while (q.peek() != null) { // peek() 최근 요소 조회
-			System.out.print(q.poll() + " "); // poll() : (현재 요소중)처음 추가된 요소 삭제
+			System.out.print(q.poll() + " "); // poll() : (현재 요소중)먼저 추가된 요소 삭제
 		}
 		System.out.println();
 
