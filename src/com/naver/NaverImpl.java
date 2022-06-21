@@ -51,20 +51,26 @@ public class NaverImpl implements Naver {
 	@Override
 	public void printMain() throws IOException, NaverException {
 
-		System.out.print("1.회원가입 2.회원전체출력 3.아이디검색 4.종료 ");
-		int n = input(4);
+		System.out.print("1.회원가입 2.회원탈퇴 3.회원전체출력 4.아이디검색 5.정보수정 6.종료 ");
+		int n = input(5);
 
 		switch (n) {
 		case 1:
 			SignUp();
 			break;
 		case 2:
-			print();
+			delete();
 			break;
 		case 3:
-			findId();
+			print();
 			break;
 		case 4:
+			findId();
+			break;
+		case 5:
+			update();
+			break;
+		case 6:
 			System.out.println("시스템 종료");
 			System.exit(0);
 		}
@@ -76,7 +82,7 @@ public class NaverImpl implements Naver {
 
 		vo = new NaverVO();
 
-		chackId();
+		chackId1();
 		chackPw();
 		chackName();
 		chackGender();
@@ -133,6 +139,33 @@ public class NaverImpl implements Naver {
 
 	}
 
+	public void chackId1() throws NaverException {
+
+		boolean result = false;
+		String id = null;
+
+		do {
+			try {
+				chackId();
+				id = vo.getId();
+
+				Iterator<NaverVO> it = list.iterator();
+				while (it.hasNext()) {
+					NaverVO vo1 = it.next();
+					if (id.equals(vo1.getId())) {
+						throw new NaverException("존재하는 아이디");
+					}
+				}
+			} catch (IOException e) {
+				System.out.println(e.toString());
+			}
+
+			result = true;
+
+		} while (!result);
+
+	}
+
 	@Override
 	public void chackPw() throws IOException, NaverException {
 
@@ -149,7 +182,7 @@ public class NaverImpl implements Naver {
 				if (!pw.equals(br.readLine())) {
 					throw new NaverException("비밀번호가 다름");
 				}
-				
+
 				result = true;
 
 			} catch (Exception e) {
@@ -165,8 +198,30 @@ public class NaverImpl implements Naver {
 	@Override
 	public void chackName() throws IOException {
 
-		System.out.print("이름? ");
-		vo.setName(br.readLine());
+		boolean result = false;
+		String name = null;
+
+		do {
+			try {
+				System.out.print("이름? ");
+				name = br.readLine();
+
+				for (int i = 0; i < name.length(); i++) {
+					char ch = name.charAt(i);
+					if ((ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z')) {
+						throw new Exception("이름은 영문자만 가능");
+					}
+				}
+
+				result = true;
+
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+
+		} while (!result);
+
+		vo.setName(name);
 
 	}
 
@@ -177,7 +232,6 @@ public class NaverImpl implements Naver {
 
 		int num = 0;
 		do {
-
 			try {
 				System.out.print("성별[1.남자 2.여자]?");
 				String str = br.readLine();
@@ -191,7 +245,7 @@ public class NaverImpl implements Naver {
 				if (num < 1 || num > 2) {
 					throw new NaverException("1또는 2를 입력");
 				}
-				
+
 				result = true;
 
 			} catch (Exception e) {
@@ -236,10 +290,7 @@ public class NaverImpl implements Naver {
 				year = Integer.parseInt(birth.substring(0, 4));
 				month = Integer.parseInt(birth.substring(4, 6));
 				day = Integer.parseInt(birth.substring(6));
-//				System.out.println(year);
-//				System.out.println(month);
-//				System.out.println(day);
-				cal.set(year, month -1, day);
+				cal.set(year, month - 1, Calendar.DATE);
 
 				if (year < 1900) {
 					throw new NaverException("1900년도 이상");
@@ -249,16 +300,10 @@ public class NaverImpl implements Naver {
 					throw new NaverException("월을 잘못입력");
 				}
 
-//				System.out.println(cal.get(Calendar.YEAR));
-//				System.out.println(cal.get(Calendar.MARCH));
-//				System.out.println(cal.get(Calendar.DATE));
-//				System.out.println(day);
-//				System.out.println(cal.getActualMaximum(Calendar.DATE));
-				
-				if (day < 1 || day > (cal.getActualMaximum(Calendar.DATE))) {
+				if (day < 1 || day > cal.getActualMaximum(Calendar.DATE)) {
 					throw new NaverException("일을 잘못입력");
 				}
-				
+
 				result = true;
 
 			} catch (Exception e) {
@@ -289,7 +334,7 @@ public class NaverImpl implements Naver {
 				if (email.indexOf(".") < 0 || email.indexOf(".") < email.indexOf("@")) {
 					throw new NaverException("이메일 형식이 맞지 않음");
 				}
-				
+
 				result = true;
 
 			} catch (Exception e) {
@@ -324,7 +369,7 @@ public class NaverImpl implements Naver {
 				}
 
 				result = true;
-				
+
 			} catch (Exception e) {
 				System.out.println(e.toString());
 			}
@@ -332,6 +377,33 @@ public class NaverImpl implements Naver {
 		} while (!result);
 
 		vo.setTel(tel);
+
+	}
+
+	@Override
+	public void delete() throws IOException, NaverException {
+
+		boolean result = false;
+
+		chackId();
+		String id = vo.getId();
+		chackPw();
+		String pw = vo.getPw();
+
+		Iterator<NaverVO> it = list.iterator();
+		while (it.hasNext()) {
+			vo = it.next();
+
+			if (id.equals(vo.getId()) && pw.equals(vo.getPw())) {
+				list.remove(vo);
+				System.out.println("삭제 완료");
+				result = true;
+			}
+		}
+
+		if (!result) {
+			System.out.println("일치하는 정보가없음");
+		}
 
 	}
 
@@ -350,27 +422,61 @@ public class NaverImpl implements Naver {
 
 		boolean result = false;
 
-		System.out.print("이름? ");
-		String name = br.readLine();
-
+		chackName();
+		String name = vo.getName();
 		chacktel();
 		int tel = vo.getTel();
 
 		Iterator<NaverVO> it = list.iterator();
 		while (it.hasNext()) {
 			vo = it.next();
-			
-			if (name.equals(vo.getName())) {
-				if (tel == vo.getTel()) {
-					System.out.println(vo.toString());
-					result = true;
-				}
-			}
 
+			if (name.equals(vo.getName()) && tel == vo.getTel()) {
+				System.out.println(vo.toString());
+				result = true;
+			}
 		}
 
 		if (!result) {
 			System.out.println("일치하는 정보가 없음");
+		}
+
+	}
+
+	@Override
+	public void update() throws IOException, NaverException {
+
+		boolean result = false;
+
+		chackId();
+		String id = vo.getId();
+		chackPw();
+		String pw = vo.getPw();
+
+		Iterator<NaverVO> it = list.iterator();
+		while (it.hasNext()) {
+			vo = it.next();
+
+			if (id.equals(vo.getId()) && pw.equals(vo.getPw())) {
+				System.out.print("수정 : ");
+				chackPw();
+				System.out.print("수정 : ");
+				chackName();
+				System.out.print("수정 : ");
+				chackGender();
+				System.out.print("수정 : ");
+				chackBirth();
+				System.out.print("수정 : ");
+				chackEmail();
+				System.out.print("수정 : ");
+				chacktel();
+				result = true;
+				break;
+			}
+		}
+
+		if (!result) {
+			System.out.println("일치하는 정보가없음");
 		}
 
 	}

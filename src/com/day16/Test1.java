@@ -49,6 +49,8 @@ public class Test1 {
 			// e.printStackTrace();
 			System.out.println("그 밖의 오류");
 
+		} finally {
+			System.out.println("항상 출력");
 		}
 
 		sc.close();

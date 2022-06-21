@@ -12,7 +12,7 @@ public interface Naver {
 
 	public void chackPw() throws IOException, NaverException;
 
-	public void chackName() throws IOException;
+	public void chackName() throws IOException, Exception;
 
 	public void chackGender() throws IOException, NaverException;
 
@@ -21,9 +21,13 @@ public interface Naver {
 	public void chackEmail() throws IOException, NaverException;
 
 	public void chacktel() throws IOException, NaverException;
+	
+	public void delete() throws IOException, NaverException;
 
 	public void print();
 
 	public void findId() throws IOException, NaverException;
+	
+	public void update() throws IOException, NaverException;
 
 }

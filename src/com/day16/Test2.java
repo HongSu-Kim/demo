@@ -29,27 +29,27 @@ public class Test2 {
 		} catch (IOException e) {
 			System.out.println("입력 에러");
 		}
-		
+
 		return oper;
 
 	}
 
 	public static void main(String[] args) {
-		
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
+
 		int num1, num2, result;
 		String oper;
-		
+
 		try {
 
 			System.out.print("첫번째 수? ");
 			num1 = Integer.parseInt(br.readLine());
 			System.out.print("두번째 수? ");
 			num2 = Integer.parseInt(br.readLine());
-			
+
 			oper = getOper();
-			
+
 			result = 0;
 			if (oper.equals("+"))
 				result = num1 + num2;
@@ -61,18 +61,12 @@ public class Test2 {
 				result = num1 / num2;
 
 			System.out.printf("%d %s %d = %d\n", num1, oper, num2, result);
-			
+
 		} catch (Exception e) {
 
 			System.out.println(e.toString());
-			
+
 		}
-		
-		
-		
-		
-		
-		
 
 	}
 

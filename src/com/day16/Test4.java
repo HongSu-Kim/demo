@@ -21,7 +21,7 @@ class MyAuthen {
 		// 영문자만 가능합니다.
 		int eng = 0, num = 0;
 		for (int i = 0; i < str.length(); i++) {
-			
+
 //			if ((str.charAt(i) < 'a' || str.charAt(i) > 'z') && (str.charAt(i) < 'A' || str.charAt(i) > 'Z')) {
 //				throw new Exception("영문자만 가능합니다.: " + str);
 //			}
@@ -37,7 +37,7 @@ class MyAuthen {
 		if (eng < 1 || num < 1) {
 			throw new Exception("영문자 숫자를 혼용 해야합니다.: " + str);
 		}
-		
+
 	}
 
 }
