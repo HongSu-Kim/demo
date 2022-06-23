@@ -1,181 +1,35 @@
 package com.day2;
 
-import java.awt.Button;
-import java.awt.Frame;
-import java.awt.Label;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-import javax.xml.soap.Text;
+public class Test5 {
 
-public class Test5 extends Frame implements ActionListener {
+	public static void main(String[] args) throws IOException {
 
-	private static final long serialVersionUID = 1L;
+		// 선언
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-	private TextField[] tf = new TextField[4];
+		String name; // String : 클래스(첫글자가 대문자)이지만 자료형(첫글자가 소문자)처럼 사용
+		int kor, eng, tot;
 
-	private Label result = new Label("", Label.LEFT);
+		// 입력
+		System.out.print("이름? "); // 이름입력
+		name = br.readLine(); // readLine()이 문자열로 받아오기 때문에 형변환을 안해도됨
 
-	private Button btn1, btn2;
+		System.out.print("국어? "); // 국어점수 입력
+		kor = Integer.parseInt(br.readLine()); // 문자열을 정수로 변환을 해주고 대입함
 
-	public Test5() {
+		System.out.print("영어? "); // 영어점수 입력
+		eng = Integer.parseInt(br.readLine());
 
-		String[] title = { "이름", "국어", "영어", "수학", "총점" };
+		// 연산
+		tot = kor + eng;
 
-		setTitle("성적처리");
-
-		setLayout(null);
-
-		for (int i = 0; i < 5; i++) {
-
-			Label lbl = new Label();
-
-			lbl.setText(title[i]);
-
-			lbl.setBounds(10, (i + 1) * 30, 50, 20);
-
-			add(lbl);
-
-			if (i != 4) {
-
-				tf[i] = new TextField();
-
-				tf[i].setBounds(80, (i + 1) * 30, 70, 20);
-				tf[i].addKeyListener(new keyHandler());
-
-				add(tf[i]);
-			} else {
-				result.setBounds(80, (i + 1) * 30, 70, 20);
-
-				add(result);
-			}
-
-		}
-
-		// 결과버튼
-		btn1 = new Button("결과");
-		btn1.setBounds(180, 30, 60, 20);
-		add(btn1);
-		btn1.addActionListener(this);
-		//
-		//
-
-		// 종료버튼
-		btn2 = new Button("종료");
-		btn2.setBounds(180, 60, 60, 20);
-		add(btn2);
-		btn2.addActionListener(this);
-		//
-
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
-
-		setSize(260, 180);
-		setResizable(false);
-		setVisible(true);
-
-	}
-
-	public static void main(String[] args) {
-		new Test5();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-
-		Object ob = e.getSource();
-
-		if (ob instanceof Button) {
-
-			Button b = (Button) ob;
-
-			if (b == btn1) {
-				// 연산
-				execute();
-
-			} else if (b == btn2) {
-				// 종료
-				System.exit(0);
-			}
-
-		}
-
-	}
-
-	private void execute() {
-
-		int tot = 0;
-
-		try {
-
-			for (int i = 1; i <= 3; i++) {
-				tot += Integer.parseInt(tf[i].getText());
-			}
-
-			result.setText(Integer.toString(tot));
-			// result.setText("" + tot);
-
-		} catch (Exception e2) {
-			result.setText("입력 오류!");
-		}
-	}
-
-	class keyHandler extends KeyAdapter {
-
-		@Override
-		public void keyPressed(KeyEvent e) {
-
-			Object ob = e.getSource();
-
-			if (e.getKeyCode() != KeyEvent.VK_ENTER) {
-				return;
-			}
-
-			// enter
-			// 결과에서 엔터쳤을 때
-			if (ob instanceof Button) {
-
-				Button b = (Button) ob;
-
-				if (b == btn1) {
-
-					// 연산
-					execute();
-
-				}
-
-				return;
-
-			}
-
-			// TextField에서 엔터쳤을 때
-			if (ob instanceof TextField) {
-
-				TextField t = (TextField) ob;
-
-				for (int i = 0; i < tf.length; i++) {
-
-					if (i != 3 && tf[i] == t) {
-						tf[i + 1].requestFocus();
-						return;
-					} else if (tf[3] == t) {
-						btn1.requestFocus();
-						return;
-					}
-
-				}
-
-			}
-		}
+		// 출력
+		System.out.println("이름 : " + name);
+		System.out.println("총점 : " + tot + "점");
 
 	}
 
