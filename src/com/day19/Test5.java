@@ -1,4 +1,4 @@
-package com.day2;
+package com.day19;
 
 import java.awt.Button;
 import java.awt.Frame;
@@ -11,16 +11,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.xml.soap.Text;
-
 public class Test5 extends Frame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
 	private TextField[] tf = new TextField[4];
-
 	private Label result = new Label("", Label.LEFT);
-
 	private Button btn1, btn2;
 
 	public Test5() {
@@ -44,11 +40,11 @@ public class Test5 extends Frame implements ActionListener {
 			if (i != 4) {
 
 				tf[i] = new TextField();
-
 				tf[i].setBounds(80, (i + 1) * 30, 70, 20);
-				tf[i].addKeyListener(new keyHandler());
+				tf[i].addKeyListener(new KeyHandler());
 
 				add(tf[i]);
+
 			} else {
 				result.setBounds(80, (i + 1) * 30, 70, 20);
 
@@ -62,21 +58,21 @@ public class Test5 extends Frame implements ActionListener {
 		btn1.setBounds(180, 30, 60, 20);
 		add(btn1);
 		btn1.addActionListener(this);
-		//
-		//
+		btn1.addKeyListener(new KeyHandler());
 
-		// 종료버튼
+		// 종료
 		btn2 = new Button("종료");
 		btn2.setBounds(180, 60, 60, 20);
 		add(btn2);
 		btn2.addActionListener(this);
-		//
 
 		addWindowListener(new WindowAdapter() {
+
 			@Override
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}
+
 		});
 
 		setSize(260, 180);
@@ -86,7 +82,9 @@ public class Test5 extends Frame implements ActionListener {
 	}
 
 	public static void main(String[] args) {
+
 		new Test5();
+
 	}
 
 	@Override
@@ -95,7 +93,6 @@ public class Test5 extends Frame implements ActionListener {
 		Object ob = e.getSource();
 
 		if (ob instanceof Button) {
-
 			Button b = (Button) ob;
 
 			if (b == btn1) {
@@ -114,7 +111,6 @@ public class Test5 extends Frame implements ActionListener {
 	private void execute() {
 
 		int tot = 0;
-
 		try {
 
 			for (int i = 1; i <= 3; i++) {
@@ -122,59 +118,54 @@ public class Test5 extends Frame implements ActionListener {
 			}
 
 			result.setText(Integer.toString(tot));
-			// result.setText("" + tot);
+//			result.setText("" + tot);
 
 		} catch (Exception e2) {
-			result.setText("입력 오류!");
+			result.setText("입력오류!!!");
 		}
+
 	}
 
-	class keyHandler extends KeyAdapter {
+	class KeyHandler extends KeyAdapter {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
 
 			Object ob = e.getSource();
 
+			// 결과에서 엔터
 			if (e.getKeyCode() != KeyEvent.VK_ENTER) {
 				return;
 			}
 
-			// enter
-			// 결과에서 엔터쳤을 때
 			if (ob instanceof Button) {
-
 				Button b = (Button) ob;
 
 				if (b == btn1) {
-
 					// 연산
 					execute();
-
 				}
 
 				return;
-
 			}
 
-			// TextField에서 엔터쳤을 때
+			// TextField에서 엔터
 			if (ob instanceof TextField) {
 
 				TextField t = (TextField) ob;
 
 				for (int i = 0; i < tf.length; i++) {
-
-					if (i != 3 && tf[i] == t) {
+					
+					if (i != 3 && tf[i] == t)
 						tf[i + 1].requestFocus();
-						return;
-					} else if (tf[3] == t) {
+					
+					else if (tf[3] == t)
 						btn1.requestFocus();
-						return;
-					}
 
 				}
 
 			}
+
 		}
 
 	}

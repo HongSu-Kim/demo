@@ -2,9 +2,10 @@ package com.score5;
 
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
 public class ScoreVO implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String name;
 	private String birth;
 	private int score;

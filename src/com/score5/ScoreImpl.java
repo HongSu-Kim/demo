@@ -3,7 +3,6 @@ package com.score5;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -13,25 +12,29 @@ import java.util.Scanner;
 
 public class ScoreImpl implements Score {
 
-	File f = new File("c:\\doc\\ScoreVO.txt");
-	Scanner sc = new Scanner(System.in);
 	List<ScoreVO> list;
+	private String path = System.getProperty("user.dir"); // C:\\java\\work\\demo
+	File f = new File(path, "\\data\\Score.txt");
+	Scanner sc = new Scanner(System.in);
 	ScoreVO vo;
 
-	@SuppressWarnings({ "unchecked", "resource" })
-	public ScoreImpl() throws ClassNotFoundException, IOException {
-		
-		if (!f.exists()) {
-			list = new ArrayList<>();
-		} else {
+	@SuppressWarnings({ "resource", "unchecked" })
+	public ScoreImpl() throws Exception {
 
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-			try {
-				list = (List<ScoreVO>) ois.readObject();
-			} catch (Exception e) {
+		try {
+
+			if (!f.getParentFile().exists()) {
+				f.getParentFile().mkdirs();
 			}
-			
+
+			if (f.exists()) {
+				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+				list = (List<ScoreVO>) ois.readObject();
+			}
+
+		} catch (Exception e) {
 		}
+
 	}
 
 	@Override
@@ -45,6 +48,11 @@ public class ScoreImpl implements Score {
 		vo.setBirth(sc.next());
 		System.out.print("점수? ");
 		vo.setScore(Integer.parseInt(sc.next()));
+
+		// 처음실행후 데이터 입력시 객체를 생성
+		if (list == null) {
+			list = new ArrayList<>();
+		}
 
 		list.add(vo);
 
@@ -75,10 +83,17 @@ public class ScoreImpl implements Score {
 	@Override
 	public void exit() throws Exception {
 
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
-		oos.writeObject(list);
-		oos.close();
+		try {
 
+			if (list == null)
+				return;
+
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
+			oos.writeObject(list);
+			oos.close();
+
+		} catch (Exception e) {
+		}
 	}
 
 }

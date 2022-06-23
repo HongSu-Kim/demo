@@ -29,7 +29,7 @@ public class ScoreMain {
 				ob.exit();
 				sc.close();
 				System.exit(0);
-				
+
 			}
 		}
 	}

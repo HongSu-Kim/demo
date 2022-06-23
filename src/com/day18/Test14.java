@@ -5,6 +5,8 @@ import java.io.ObjectInputStream;
 import java.util.Hashtable;
 import java.util.Iterator;
 
+// 역직렬화
+
 public class Test14 {
 
 	public static void main(String[] args) throws Exception {
