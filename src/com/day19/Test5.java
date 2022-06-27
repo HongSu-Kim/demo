@@ -93,7 +93,7 @@ public class Test5 extends Frame implements ActionListener {
 		Object ob = e.getSource();
 
 		if (ob instanceof Button) {
-			Button b = (Button) ob;
+			Button b = (Button) ob; // downcast
 
 			if (b == btn1) {
 				// 연산
@@ -126,7 +126,7 @@ public class Test5 extends Frame implements ActionListener {
 
 	}
 
-	class KeyHandler extends KeyAdapter {
+	class KeyHandler extends KeyAdapter { // Adapter를 상속받을떄 이름을 보통 Handler로 만들어줌
 
 		@Override
 		public void keyPressed(KeyEvent e) {
@@ -134,32 +134,32 @@ public class Test5 extends Frame implements ActionListener {
 			Object ob = e.getSource();
 
 			// 결과에서 엔터
-			if (e.getKeyCode() != KeyEvent.VK_ENTER) {
+			if (e.getKeyCode() != KeyEvent.VK_ENTER) { // 엔터가 아니면 return
 				return;
 			}
 
-			if (ob instanceof Button) {
+			if (ob instanceof Button) { // ob가 Button일때
 				Button b = (Button) ob;
 
 				if (b == btn1) {
 					// 연산
 					execute();
-				}
+				} // btn2면 return
 
 				return;
 			}
 
 			// TextField에서 엔터
-			if (ob instanceof TextField) {
+			if (ob instanceof TextField) { // ob가 TextField일때
 
 				TextField t = (TextField) ob;
 
 				for (int i = 0; i < tf.length; i++) {
-					
-					if (i != 3 && tf[i] == t)
+
+					if (i != 3 && tf[i] == t) // i가 0,1,2일때 다음 TestField에 포커스
 						tf[i + 1].requestFocus();
-					
-					else if (tf[3] == t)
+
+					else if (tf[3] == t) // i가 3이면(마지막 TestField) bnt1에 포커스
 						btn1.requestFocus();
 
 				}

@@ -5,9 +5,9 @@ import java.awt.Frame;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-// AWT (Abstract Window Toolkit) -> Swing -> FX
+// AWT(Abstract Window Toolkit) -> Swing -> FX
 
-public class Test1 extends Frame implements WindowListener{
+public class Test1 extends Frame implements WindowListener { // WindowListener : 필요없는 메도스까지 오버라이딩해야해서 안씀
 
 	private static final long serialVersionUID = 1L;
 
@@ -38,7 +38,7 @@ public class Test1 extends Frame implements WindowListener{
 	}
 
 	@Override
-	public void windowClosing(WindowEvent e) {
+	public void windowClosing(WindowEvent e) { // X버튼 클릭
 		System.exit(0);
 	}
 

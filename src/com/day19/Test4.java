@@ -28,7 +28,7 @@ public class Test4 extends Frame implements ActionListener {
 		add(ta, BorderLayout.CENTER);
 		add(btn, BorderLayout.SOUTH);
 
-		tf.addActionListener(this);
+		tf.addActionListener(this); // Event를 actionPerformed()에 전달
 		btn.addActionListener(this);
 
 		setTitle("윈도우");
@@ -58,7 +58,7 @@ public class Test4 extends Frame implements ActionListener {
 
 		Object ob = evt.getSource(); // tf, btn
 
-		if (ob instanceof TextField || ob instanceof Button) {
+		if (ob instanceof TextField || ob instanceof Button) { // ob의 타입을 검사
 
 			String str = tf.getText();
 
@@ -67,7 +67,7 @@ public class Test4 extends Frame implements ActionListener {
 			}
 
 			tf.setText("");
-			tf.requestFocus();
+			tf.requestFocus(); // 포커스를 tf로 이동
 
 		}
 

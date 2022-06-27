@@ -189,16 +189,10 @@ public class BMIImpl implements BMI {
 			}
 		};
 		
-		List<ProfileVO> lists = new ArrayList<>();
-		
-		Iterator<ProfileVO> it = hMap.values().iterator();
-		while(it.hasNext()) {
-			lists.add(it.next());
-		}
-		
+		List<ProfileVO> lists = new ArrayList<>(hMap.values());
 		Collections.sort(lists, comp);
 		
-		it = lists.iterator();
+		Iterator<ProfileVO> it = lists.iterator();
 		while(it.hasNext()) {
 			vo = it.next();
 			System.out.print(vo.toString());
