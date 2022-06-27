@@ -22,7 +22,7 @@ public class ClientTest extends Frame implements ActionListener, Runnable {
 
 	private Socket sc = null;
 	private int port = 7777;
-	private String host = "localhost"; // localhost : (127.0.0.1), (10.10.6.97)
+	private String host = "localhost"; // ¼­¹öip // localhost : (127.0.0.1), (10.10.6.97)
 
 	public ClientTest() {
 
